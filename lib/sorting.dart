@@ -10,6 +10,7 @@ class Sort extends StatefulWidget {
 class _SortState extends State<Sort> {
   var data = TextEditingController();
   var intList = [];
+  int time = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -29,19 +30,80 @@ class _SortState extends State<Sort> {
               width: 500,
               height: 100,
             ),
+            Center(
+              child: Row(
+                children: [
+                  //////////////////////////////////sort
+                  ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          if (data.text.isEmpty) {
+                            return;
+                          }
 
-            ElevatedButton(
-                onPressed: () {
+                          var output = data.text.split(",");
 
-                  setState(() {var output = data.text.split(",");
-                  intList = output.map((element) {
-                    return int.parse(element);
-                  }).toList();
-                  intList.sort();}); //useEffect
-                },
-                child: const Text("sorting")),
+                          intList = output.map((element) {
+                            return int.parse(element);
+                          }).toList();
+
+                          intList.sort();
+                        }); //useEffect
+                      },
+                      child: const Text("sorting")),
+                  const SizedBox(height: 23),
+                  //////////////////////////////////bubble
+                  ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          var output = data.text.split(",");
+
+                          intList = output.map((element) {
+                            return int.parse(element);
+                          }).toList();
+
+                          print(intList);
+
+                          Stopwatch stopwatch1 = Stopwatch()..start();
+
+                          // if(data.text.isEmpty){ return;}
+
+                          for (var i = 0; i < intList.length; i++) {
+                            var swapped = false;
+
+                            for (var j = i + 1; j < intList.length; j++) {
+                              if (intList[i] > intList[j]) {
+                                var tmp = intList[i];
+
+                                intList[i] = intList[j];
+
+                                intList[j] = tmp;
+
+                                swapped = true;
+                              }
+                            }
+
+                            if (!swapped) break;
+                          }
+
+                          int stop = stopwatch1.elapsedMicroseconds;
+
+                          setState(() {
+                            time = stop;
+                          });
+                        }); //useEffect
+                      },
+                      child: const Text("bubbleSort")),
+                  //////////////////////////////////insertion
+
+
+                ],
+              ),
+            ),
             const SizedBox(height: 23),
-            if (intList.isNotEmpty) Text("Sorting Array : ${intList}")
+            if (intList.isNotEmpty) Text("Sorting Array : $intList"),
+            const SizedBox(height: 23),
+            if (intList.isNotEmpty) Text("Time : $time"),
           ],
         ),
       ),
