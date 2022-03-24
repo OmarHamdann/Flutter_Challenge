@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sorting/algorithm.dart';
+import 'package:sorting/visualizer.dart';
 
 class Sort extends StatefulWidget {
   const Sort({Key? key}) : super(key: key);
@@ -12,77 +12,238 @@ class Sort extends StatefulWidget {
 class _SortState extends State<Sort> {
   var data = TextEditingController();
 
-  String timeBubble = "";
-  String timeInsertion = "";
+  String? timeBubble = "";
+  String? timeInsertion = "";
+  String? timeHeap = "";
+  String? timeSelection = "";
+  String? timeMerge = "";
   List sortedArray = [];
 
   List<dynamic> arrayData(var list) {
     var s1 = list
         .split(",")
         .where((x) {
-          return double.tryParse(x) != null;
+          return int.tryParse(x) != null;
         })
         .toList()
-        .map((x) => double.tryParse(x))
+        .map((x) => int.tryParse(x))
         .toList(); // s1.removeWhere((x){return x=='['||x==']';}); print(s1);
 
     return s1;
   }
 
-  late SortAlgorithm bubble;
+  late SortAlgorithm algorithm;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            AppBar(
-              title: const Text('Sorting Algorithm Analyzer'),
-            ),
-            SizedBox(
-              
-              child: TextField(
-                controller: data,
-                onChanged: (e) {
-                  setState(() {});
-                },
-                decoration: const InputDecoration(
-                    labelText: "Enter Data ...", hintText: "5,7,1,2,4,3,6"),
+      appBar: AppBar(
+        title: const Text('Sorting Algorithm Analyzer'),
+      ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Center(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 20,
               ),
-              width: 500,
-              height: 100,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                //////////////////////////////////sort
-                ElevatedButton(
-                    onPressed: data.text.isNotEmpty
-                        ? () {
-                            setState(() {
-                              sortedArray = arrayData(data.text);
-                              sortedArray.sort();
-                              bubble = SortAlgorithm();
-                              //////////////////////////////////bubble
 
-                              timeInsertion =
-                                  bubble.insertionSort(arrayData(data.text));
-                              //////////////////////////////////insertion
-                              timeBubble = bubble.bubble(arrayData(data.text));
-                            }); //useEffect
-                          }
-                        : null,
-                    child: const Text("sorting")),
-                const SizedBox(width: 23),
-              ],
-            ),
-            const SizedBox(height: 23),
-            if (sortedArray.isNotEmpty) Text("Sorting Array : $sortedArray"),
-            const SizedBox(height: 23),
-            if (sortedArray.isNotEmpty) Text("Time Bubble : $timeBubble"),
-            if (sortedArray.isNotEmpty) Text("Time Insertion : $timeInsertion"),
-          ],
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: 150,
+                child: TextField(
+                  controller: data,
+                  onChanged: (e) {
+                    setState(() {});
+                  },
+                  maxLines: 3,
+                  minLines: 1,
+                  decoration: const InputDecoration(
+                      labelText: "Enter Data ...", hintText: "5,7,1,2,4,3,6"),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  //////////////////////////////////sort
+                  ElevatedButton(
+                      onPressed: data.text.isNotEmpty
+                          ? () {
+                              setState(() {
+                                sortedArray = arrayData(data.text);
+                                sortedArray.sort();
+                                algorithm = SortAlgorithm();
+                                //////////////////////////////////insertion
+
+                                timeInsertion =
+                                    algorithm.insertionSort(arrayData(data.text));
+                                //////////////////////////////////Bubble
+                                timeBubble =
+                                    algorithm.bubble(arrayData(data.text));
+                                //////////////////////////////////mergeSort
+                                timeMerge = algorithm.mergeSort(
+                                    arrayData(data.text),
+                                    0,
+                                    arrayData(data.text).length - 1);
+                                //////////////////////////////////heapSort
+                                timeHeap =
+                                    algorithm.heapSort(arrayData(data.text));
+                                //////////////////////////////////selectionSort
+                                timeSelection =
+                                    algorithm.heapSort(arrayData(data.text));
+                              }); //useEffect
+                            }
+                          : null,
+                      child: const Text("sorting")),
+                  const SizedBox(width: 23),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              if (sortedArray.isNotEmpty) Text("Sorting Array : $sortedArray"),
+              const SizedBox(
+                height: 20,
+              ),
+              SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                child: DataTable(columns: const [
+                  DataColumn(label: Text('SortingType')),
+                  DataColumn(label: Text('ExecutionTime')),
+                  DataColumn(label: Text('TimeComplexity')),
+
+                ], rows: [
+                  DataRow(
+                    cells: [
+                      const DataCell(
+                        Text('SelectionSort'),
+                      ),
+                      DataCell(
+                        Text('$timeSelection'),
+                      ),
+                      const DataCell(
+                        Text('O(n^2)'),
+                      ),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      const DataCell(
+                        Text('InsertionSort'),
+                      ),
+                      DataCell(
+                        Text(timeInsertion.toString()),
+                      ),
+                      const DataCell(
+                        Text('O(n^2)'),
+                      ),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      const DataCell(
+                        Text('MergeSort'),
+                      ),
+                      DataCell(
+                        Text(timeMerge.toString()),
+                      ),
+                      const DataCell(
+                        Text('O(n log(n))'),
+                      ),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      const DataCell(
+                        Text('HeapSort'),
+                      ),
+                      DataCell(
+                        Text(timeHeap.toString()),
+                      ),
+                      const DataCell(
+                        Text('O(n log(n))'),
+                      ),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      const DataCell(
+                        Text('BubbleSort'),
+                      ),
+                      DataCell(
+                        Text(timeBubble.toString()),
+                      ),
+                      const DataCell(
+                        Text('O(n^2)'),
+                      ),
+                    ],
+                  ),
+                ]),
+              ),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        icon: const Icon(Icons.animation_outlined),
+        label: const Text('Show Animation'),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const Visual()),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class FirstRoute extends StatelessWidget {
+  const FirstRoute({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('First Route'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text('Open route'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Visual()),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class SecondRoute extends StatelessWidget {
+  const SecondRoute({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Second Route'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Go back!'),
         ),
       ),
     );
