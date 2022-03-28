@@ -27,8 +27,8 @@ class _SortState extends State<Sort> {
     var s1 = list
         .split(",")
         .where((x) {
-      return int.tryParse(x) != null;
-    })
+          return int.tryParse(x) != null;
+        })
         .toList()
         .map((x) => int.tryParse(x))
         .toList(); // s1.removeWhere((x){return x=='['||x==']';}); print(s1);
@@ -56,31 +56,32 @@ class _SortState extends State<Sort> {
                   height: 10,
                 ),
                 Text(
-                  "HELLO ${context
-                      .read<LoginProvider>()
-                      .userName
-                      .toUpperCase()}",
+                  "HELLO ${context.read<LoginProvider>().userName.toUpperCase()}",
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 defaultButton(
                   onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content:Text('HELLO ${context
-                            .read<LoginProvider>()
-                            .userName
-                            .toUpperCase()
-                            .toString()}'),backgroundColor: Colors.teal,));
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                          'HELLO ${context.read<LoginProvider>().userName.toUpperCase().toString()}'),
+                      backgroundColor: Colors.teal,
+                    ));
                   },
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: const [
-
-                      Text('ReusableButton  ',
-                        style: TextStyle(color: Colors.white),),
-                      Icon(Icons.print, color: Colors.white,),
-                    ],),
+                      Text(
+                        'ReusableButton  ',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      Icon(
+                        Icons.print,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
@@ -118,30 +119,30 @@ class _SortState extends State<Sort> {
                     ElevatedButton(
                         onPressed: data.text.isNotEmpty
                             ? () {
-                          setState(() {
-                            sortedArray = arrayData(data.text);
-                            sortedArray.sort();
-                            algorithm = SortAlgorithm();
-                            //////////////////////////////////insertion
+                                setState(() {
+                                  sortedArray = arrayData(data.text);
+                                  sortedArray.sort();
+                                  algorithm = SortAlgorithm();
+                                  //////////////////////////////////insertion
 
-                            timeInsertion = algorithm
-                                .insertionSort(arrayData(data.text));
-                            //////////////////////////////////Bubble
-                            timeBubble =
-                                algorithm.bubble(arrayData(data.text));
-                            //////////////////////////////////mergeSort
-                            timeMerge = algorithm.mergeSort(
-                                arrayData(data.text),
-                                0,
-                                arrayData(data.text).length - 1);
-                            //////////////////////////////////heapSort
-                            timeHeap =
-                                algorithm.heapSort(arrayData(data.text));
-                            //////////////////////////////////selectionSort
-                            timeSelection =
-                                algorithm.heapSort(arrayData(data.text));
-                          }); //useEffect
-                        }
+                                  timeInsertion = algorithm
+                                      .insertionSort(arrayData(data.text));
+                                  //////////////////////////////////Bubble
+                                  timeBubble =
+                                      algorithm.bubble(arrayData(data.text));
+                                  //////////////////////////////////mergeSort
+                                  timeMerge = algorithm.mergeSort(
+                                      arrayData(data.text),
+                                      0,
+                                      arrayData(data.text).length - 1);
+                                  //////////////////////////////////heapSort
+                                  timeHeap =
+                                      algorithm.heapSort(arrayData(data.text));
+                                  //////////////////////////////////selectionSort
+                                  timeSelection =
+                                      algorithm.heapSort(arrayData(data.text));
+                                }); //useEffect
+                              }
                             : null,
                         child: const Text("sorting")),
                     const SizedBox(width: 23),

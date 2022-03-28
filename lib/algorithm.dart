@@ -1,6 +1,8 @@
 class SortAlgorithm {
   ////////////////////////////////////////////// bubbleSort
+  /// time complexity: O(n^2)
   String bubble(List intList) {
+    
     Stopwatch stopwatch1 = Stopwatch()..start();
 
     // if(data.text.isEmpty){ return;}
@@ -30,6 +32,7 @@ class SortAlgorithm {
     return stop.toString();
   }
 ////////////////////////////////////////////// insertionSort
+// time complexity O(n^2)
   String insertionSort(List list) {
     Stopwatch stopwatch2 = Stopwatch()..start();
 
@@ -51,6 +54,7 @@ class SortAlgorithm {
     return stop.toString();
   }
 ////////////////////////////////////////////// mergesSort
+/// time complexity O(n*log(n))
 
     void merges(List list, int leftIndex, int middleIndex, int rightIndex) {
       int leftSize = middleIndex - leftIndex + 1;
@@ -111,6 +115,7 @@ class SortAlgorithm {
     }
 
     /////////////////////////////////////////////heapSort
+    /// time complexity O(n*log(n))
   void heapIfy(List list, int n, int i) {
     int largest = i;
     int l = 2 * i + 1;
