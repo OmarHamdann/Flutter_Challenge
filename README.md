@@ -15,7 +15,7 @@ samples, guidance on mobile development, and a full API reference.
 
 # Demo APK 📱
 
-https://mega.nz/file/oNUBVbqT#G4Bls2H6mH5A2n0IoJPDG8rhz9iLoO37IjnlNAHRw6s
+Click here and install APK 👉👉 [APK](https://mega.nz/file/oNUBVbqT#G4Bls2H6mH5A2n0IoJPDG8rhz9iLoO37IjnlNAHRw6s) 
 
 # Sorting Algorithms
 ## :memo: Table of Contents
