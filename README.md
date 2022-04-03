@@ -24,7 +24,7 @@ Click here and install APK 👉👉 [APK](https://mega.nz/file/oNUBVbqT#G4Bls2H6
 - [Built Using](#built_using)
 - [Guided By](#guided_by)
 
-##: About <a name = "about"></a>
+## About <a name = "about"></a>
 This project was built to explain the sorting algorithms types.
 
 ## :balloon: Usage <a name="usage"></a>
