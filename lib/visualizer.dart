@@ -51,7 +51,7 @@ class _VisualState extends State<Visual> {
     100,
     20
   ];
-
+// update array
   _updateArrayWithDelay(List<int> updatedArr) async {
     await Future.delayed(const Duration(milliseconds: 300), () {
       setState(() {
@@ -59,7 +59,7 @@ class _VisualState extends State<Visual> {
       });
     });
   }
-
+// bubble sort Visualiser
   Future<void> bubbleSort(List a) async {
     for (var i = 0; i < a.length; i++) {
       bool swaped = false;
@@ -79,7 +79,7 @@ class _VisualState extends State<Visual> {
       if (!swaped) break;
     }
   }
-
+// selection sort Visualiser
   selectionSortVisualiser(List a) async {
     List<int> selectArr = List.from(a);
     int minIndex, temp;
@@ -103,7 +103,7 @@ class _VisualState extends State<Visual> {
       });
     }
   }
-
+// insertion sort Visualiser
   _insertionSortVisualiser(List a) async {
     List<int> insertArr = List.from(a);
     int key, j;
@@ -125,8 +125,7 @@ class _VisualState extends State<Visual> {
     }
   }
 
-  //helper function to partition array for quicksort
-
+//merge sort Visualiser
   _mergeSortVisualiser(List<int> mergeArr, int low, int high) async {
     if (low < high) {
       // Same as (l+r)/2, but avoids overflow for
@@ -187,6 +186,7 @@ class _VisualState extends State<Visual> {
     }
   }
 
+  //heap sort Visualiser
   _heapSortVisualiser(List<int> heapArr) async {
     int n = heapArr.length;
 
@@ -228,6 +228,7 @@ class _VisualState extends State<Visual> {
     }
   }
 
+  //widget build
   @override
   Widget build(BuildContext context) {
     return Scaffold(
