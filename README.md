@@ -15,7 +15,7 @@ samples, guidance on mobile development, and a full API reference.
 
 # Demo APK 📱
 
-https://mega.nz/file/oNUBVbqT#G4Bls2H6mH5A2n0IoJPDG8rhz9iLoO37IjnlNAHRw6s
+Click here and install APK 👉👉 [APK](https://mega.nz/file/oNUBVbqT#G4Bls2H6mH5A2n0IoJPDG8rhz9iLoO37IjnlNAHRw6s) 
 
 # Sorting Algorithms
 ## :memo: Table of Contents
@@ -24,7 +24,7 @@ https://mega.nz/file/oNUBVbqT#G4Bls2H6mH5A2n0IoJPDG8rhz9iLoO37IjnlNAHRw6s
 - [Built Using](#built_using)
 - [Guided By](#guided_by)
 
-## :face_with_monocle: About <a name = "about"></a>
+## About <a name = "about"></a>
 This project was built to explain the sorting algorithms types.
 
 ## :balloon: Usage <a name="usage"></a>
