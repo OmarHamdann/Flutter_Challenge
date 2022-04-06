@@ -5,6 +5,7 @@ import 'package:sorting/provider/provider_notifer.dart';
 import 'package:sorting/visualizer.dart';
 
 import 'components/reusable_widgets.dart';
+import 'weather_view.dart';
 
 class Sort extends StatefulWidget {
   const Sort({Key? key}) : super(key: key);
@@ -43,6 +44,14 @@ class _SortState extends State<Sort> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sorting Algorithm Analyzer'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (ctx) => WeatherView()));
+              },
+              icon: const Icon(Icons.cloud))
+        ],
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
