@@ -15,7 +15,7 @@ samples, guidance on mobile development, and a full API reference.
 
 # Demo APK 📱
 
-Click here and install APK 👉👉 [APK](https://mega.nz/file/oNUBVbqT#G4Bls2H6mH5A2n0IoJPDG8rhz9iLoO37IjnlNAHRw6s) 
+Click here and install APK 👉👉 [APK](https://mega.nz/file/YJE10RIC#DYWF4JrtAuzlxet4OJt22uDBd4zWm3ZoRiPFhRlhSd8) 
 
 # Sorting Algorithms
 ## :memo: Table of Contents
@@ -34,7 +34,8 @@ This project was built to explain the sorting algorithms types.
 2- After that, you will see the analyzer page.
 3- you can add an array to the input field and click analyze.
 4- in the bottom, you can move to the visualization page by clicking on the button.
-
+5- cloud icon: when you click the icon shows you a window asking for the city name.
+6- insert the city you would like to know its weather.
 ```
 ## :pick: Built Using <a name = "built_using"></a>
 - [Dart](https://dart.dev/) - Programming Language based on OOP
