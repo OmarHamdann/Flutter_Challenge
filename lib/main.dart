@@ -3,10 +3,12 @@ import 'package:provider/provider.dart';
 import 'package:sorting/provider/provider_notifer.dart';
 
 import 'login/login_screen.dart';
-import 'sorting.dart';
+import 'network/dio_helper.dart';
 
 void main() {
-  runApp(MyApp());
+  DioHelper.init();
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
