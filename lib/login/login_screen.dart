@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sorting/provider/provider_notifer.dart';
@@ -72,8 +71,9 @@ class LoginScreen extends StatelessWidget {
                       icon: context.read<LoginProvider>().visibility
                           ? const Icon(Icons.visibility)
                           : const Icon(Icons.visibility_off),
-                      onPressed:
-                          Provider.of<LoginProvider>(context,).changeVisibility,
+                      onPressed: Provider.of<LoginProvider>(
+                        context,
+                      ).changeVisibility,
                     ),
                     labelText: 'Password',
                     border: OutlineInputBorder(

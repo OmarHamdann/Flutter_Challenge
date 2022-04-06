@@ -23,10 +23,14 @@ class LoginProvider extends ChangeNotifier {
     }).then((value) {
       weatherModel = WeatherModel.fromJson(value.data);
       notifyListeners();
-      print(value.data);
     }).catchError((onError) {
-            ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(onError.toString(),maxLines: 1,),backgroundColor: Colors.red,));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+          onError.toString(),
+          maxLines: 1,
+        ),
+        backgroundColor: Colors.red,
+      ));
     });
   }
 

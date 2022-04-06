@@ -12,16 +12,16 @@ class DioHelper {
   static init() {
     dio = Dio(BaseOptions(
         baseUrl: 'https://api.openweathermap.org',
-        //  headers: {'lang': 'en', 'Content-Type': 'application/json'},
+         headers: { 'Content-Type': 'application/json'},
         receiveDataWhenStatusError: true));
   }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //@GET
-  static Future<Response> getData({required String url, // End Point
-    Map<String, dynamic> ?query,
-    }) async {
-
+  static Future<Response> getData({
+    required String url, // End Point
+    Map<String, dynamic>? query,
+  }) async {
     return await dio.get(url, queryParameters: query);
   }
 

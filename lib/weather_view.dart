@@ -42,7 +42,9 @@ class WeatherView extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              const Divider(color: Colors.teal,),
+              const Divider(
+                color: Colors.teal,
+              ),
               const SizedBox(
                 height: 30,
               ),
@@ -64,7 +66,7 @@ class WeatherView extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton:  FloatingActionButton.extended(
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: () => Provider.of<LoginProvider>(context, listen: false)
             .getWeatherInfo(context, _weatherController.text),
         label: const Text(
